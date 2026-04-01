@@ -32,7 +32,6 @@ public abstract class SwerveModule {
         angleEncoder = moduleConstants.getCanCoder();
         this.swerveModuleConstants = moduleConstants;
         lastAngle = Rotation2d.fromDegrees(0);
-
         lastVelo = Units.MetersPerSecond.of(0.0);
         lastVeloTime = Units.Seconds.of(Timer.getFPGATimestamp());
     }
@@ -126,6 +125,8 @@ public abstract class SwerveModule {
         if (swerveModuleConstants.swerveTuningMode) {
             putNumber("Target Drive Velo", state.speedMetersPerSecond);
             putNumber("Target Angle", angle.getDegrees());
+            putNumber("Normalized Target Module Angle", MathUtil.inputModulus(angle.getDegrees(), 0.0, 360.0));
+
         }
     
         applySwerveModuleState(state.speedMetersPerSecond, angle);

@@ -4,15 +4,19 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.spark.SparkMax;
+import com.ctre.phoenix6.hardware.TalonFX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Indexer extends SubsystemBase {
     private static Indexer instance;
-    private final SparkMax motor;
+    private final TalonFX spindexerMotor;
+    private final TalonFX handoffMotor;
+    private final DigitalInput beamBreak;
 
     public static Indexer getInstance() {
         if (instance == null) {
@@ -23,35 +27,60 @@ public class Indexer extends SubsystemBase {
     }
 
     private Indexer() {
-        motor = Constants.Indexer.MOTOR_CONFIG.createSparkMax();
+        spindexerMotor = Constants.Indexer.MOTOR_CONFIG.createTalon();
+        handoffMotor = Constants.Indexer.HANDOFF_CONFIG.createTalon();
+        beamBreak = new DigitalInput(Constants.Indexer.BEAMBREAK_ID);
     }
 
-    /**
-     * Runs the indexer :shock:
-     * @return the Command that runs the indexer
-     */
-    public Command runIndexer() {
-        return run(() -> motor.set(Constants.Indexer.SPEED));
+    public Command runSpindexer() {
+        return runOnce(() -> spindexerMotor.set(Constants.Indexer.SPEED));
     }
 
-    /**
-     * Stops the indexer
-     * @return the Command that stops the indexer
-     */
-    public Command stopIndexer() {
-        return run(() -> motor.set(0.0));
+    public void runSpindexerNC() {
+        spindexerMotor.set(Constants.Indexer.SPEED);
     }
 
-    /**
-     * Runs the indexer on reverse
-     * @return the Command that runs the indexer on reverse
-     */
-    public Command reverseIndexer() {
-        return run(() -> motor.set(-Constants.Indexer.SPEED));
+    public void stopSpindexerNC() {
+        spindexerMotor.set(0.0);
+    }
+
+    public Command stopSpindexer() {
+        return runOnce(() -> spindexerMotor.set(0.0));
+    }
+
+    public Command reverseSpindexer() {
+        return runOnce(() -> spindexerMotor.set(-Constants.Indexer.SPEED/4.0));
+    }
+
+    public Command runHandoff() {
+        return runOnce(() -> handoffMotor.set(Constants.Indexer.SPEED));
+    }
+
+    public void runHandoffNC() {
+        handoffMotor.set(Constants.Indexer.SPEED);
+    }
+
+    public void stopHandoffNC() {
+        handoffMotor.set(0.0);
+    }
+
+    public Command stopHandoff() {
+        return runOnce(() -> handoffMotor.set(0.0));
+    }
+
+    public Command reverseHandoff() {
+        return runOnce(() -> handoffMotor.set(-Constants.Indexer.SPEED));
+    }
+
+    public boolean ballInHandoff() {
+        return !beamBreak.get();
     }
 
     @Override
     public void periodic() {
-        
+        SmartDashboard.putNumber("Spindexer Speed", spindexerMotor.get());
+        SmartDashboard.putNumber("Handoff Speed", handoffMotor.get());
+        SmartDashboard.putNumber("Handoff Voltage", handoffMotor.getMotorVoltage().getValueAsDouble());
+        SmartDashboard.putBoolean("Ball in Handoff", !beamBreak.get());
     }
 }

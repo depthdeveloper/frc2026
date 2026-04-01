@@ -1,0 +1,133 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.007,
+        "y": 1.123
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.5721538461538476,
+        "y": 1.6977307692307693
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.8746410256410275,
+        "y": 3.267538461538462
+      },
+      "prevControl": {
+        "x": 7.914345187866724,
+        "y": -1.604531584598575
+      },
+      "nextControl": {
+        "x": 7.851384615384617,
+        "y": 6.12131633870006
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.793166666666668,
+        "y": 0.5697948717948724
+      },
+      "prevControl": {
+        "x": 7.0257820512820555,
+        "y": 0.7209615384615393
+      },
+      "nextControl": {
+        "x": 3.23232534899386,
+        "y": 0.46411290757744245
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.409410256410257,
+        "y": 0.5697948717948724
+      },
+      "prevControl": {
+        "x": 4.1885,
+        "y": 0.48839743589743534
+      },
+      "nextControl": {
+        "x": 2.616500186139449,
+        "y": 0.652636222420182
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.007,
+        "y": 3.0533631484794275
+      },
+      "prevControl": {
+        "x": 2.106232394366198,
+        "y": 2.693661971830986
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "ShootFuel",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "CollectFuel",
+      "waypointRelativePos": 0.9302325581395522,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "CollectFuel",
+      "waypointRelativePos": 0.9978768577494692,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "CollectFuel",
+      "waypointRelativePos": 1.2846068660022243,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "ShootFuel",
+      "waypointRelativePos": 4.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0.0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "Right",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

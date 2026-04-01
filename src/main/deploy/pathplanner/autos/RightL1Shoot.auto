@@ -1,0 +1,68 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ZeroPivot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ZeroTurret"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RightLeaveShoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootFuel"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RightClimbL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Extend To L1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RightClimbingL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Retract To Idle"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
